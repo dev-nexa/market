@@ -10,7 +10,6 @@ use App\Models\User;
 use Cache;
 use Storage;
 use Session;
-
 class LanguageController extends Controller
 {
     public function __construct() {
