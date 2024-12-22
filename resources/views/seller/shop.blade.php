@@ -65,7 +65,7 @@
                         </div>
                     </div>
                 @endif 
-                <div class="row">
+                {{-- <div class="row">
                     <label class="col-md-2 col-form-label">{{ translate('Meta Title') }}<span class="text-danger text-danger">*</span></label>
                     <div class="col-md-10">
                         <input type="text" class="form-control mb-3" placeholder="{{ translate('Meta Title')}}" name="meta_title" value="{{ $shop->meta_title }}" required>
@@ -76,7 +76,7 @@
                     <div class="col-md-10">
                         <textarea name="meta_description" rows="3" class="form-control mb-3" required>{{ $shop->meta_description }}</textarea>
                     </div>
-                </div>
+                </div> --}}
                 <div class="form-group mb-0 text-right">
                     <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>
                 </div>
@@ -151,7 +151,7 @@
     @endif
 
     <!-- Banner Settings -->
-    <div class="card">
+    {{-- <div class="card">
         <div class="card-header">
             <h5 class="mb-0 h6">{{ translate('Banner Settings') }}</h5>
         </div>
@@ -563,7 +563,7 @@
                 </div>
             </form>
         </div>
-    </div>
+    </div> --}}
 
     <!-- Social Media Link -->
     <div class="card">
@@ -589,7 +589,7 @@
                             <small class="text-muted">{{ translate('Insert link with https ') }}</small>
                         </div>
                     </div>
-                    <div class="row mb-3">
+                    {{-- <div class="row mb-3">
                         <label class="col-md-2 col-form-label">{{ translate('Twitter') }}</label>
                         <div class="col-md-10">
                             <input type="text" class="form-control" placeholder="{{ translate('Twitter')}}" name="twitter" value="{{ $shop->twitter }}">
@@ -609,7 +609,7 @@
                             <input type="text" class="form-control" placeholder="{{ translate('Youtube')}}" name="youtube" value="{{ $shop->youtube }}">
                             <small class="text-muted">{{ translate('Insert link with https ') }}</small>
                         </div>
-                    </div>
+                    </div> --}}
                 </div>
                 <div class="form-group mb-0 text-right">
                     <button type="submit" class="btn btn-sm btn-primary">{{translate('Save')}}</button>

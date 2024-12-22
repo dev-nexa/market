@@ -45,7 +45,7 @@
                             </a>
                         </li>
 
-                        <li class="aiz-side-nav-item">
+                        {{-- <li class="aiz-side-nav-item">
                             <a href="{{ route('seller.categories_wise_product_discount') }}"
                                 class="aiz-side-nav-link">
                                 <span class="aiz-side-nav-text">{{ translate('Category-Wise Discount') }}</span>
@@ -69,7 +69,7 @@
                                 class="aiz-side-nav-link {{ areActiveRoutes(['seller.product-reviews', 'seller.detail-reviews']) }}">
                                 <span class="aiz-side-nav-text">{{ translate('Product Reviews') }}</span>
                             </a>
-                        </li>
+                        </li> --}}
                     </ul>
                 </li>
 
@@ -212,13 +212,13 @@
                 @endif
 
                 {{-- Orders --}}
-                <li class="aiz-side-nav-item">
+                {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('seller.orders.index') }}"
                         class="aiz-side-nav-link {{ areActiveRoutes(['seller.orders.index', 'seller.orders.show']) }}">
                         <i class="las la-money-bill aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">{{ translate('Orders') }}</span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- Refund Request --}}
                 @if (addon_is_activated('refund_request'))
@@ -241,33 +241,33 @@
                 </li>
 
                 {{-- Payment History --}}
-                <li class="aiz-side-nav-item">
+                {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('seller.payments.index') }}"
                         class="aiz-side-nav-link {{ areActiveRoutes(['seller.payments.index']) }}">
                         <i class="las la-history aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">{{ translate('Payment History') }}</span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- Money Withdraw --}}
-                <li class="aiz-side-nav-item">
+                {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('seller.money_withdraw_requests.index') }}"
                         class="aiz-side-nav-link {{ areActiveRoutes(['seller.money_withdraw_requests.index']) }}">
                         <i class="las la-money-bill-wave-alt aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">{{ translate('Money Withdraw') }}</span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- Commission History --}}
-                <li class="aiz-side-nav-item">
+                {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('seller.commission-history.index') }}" class="aiz-side-nav-link">
                         <i class="las la-file-alt aiz-side-nav-icon"></i>
                         <span class="aiz-side-nav-text">{{ translate('Commission History') }}</span>
                     </a>
-                </li>
+                </li> --}}
 
                 {{-- Conversations --}}
-                @if (get_setting('conversation_system') == 1)
+                {{-- @if (get_setting('conversation_system') == 1)
                     @php
                         $conversation = \App\Models\Conversation::where('sender_id', Auth::user()->id)
                             ->where('sender_viewed', 0)
@@ -283,10 +283,10 @@
                             @endif
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
                 {{-- Product Queries --}}
-                @if (get_setting('product_query_activation') == 1)
+                {{-- @if (get_setting('product_query_activation') == 1)
                     <li class="aiz-side-nav-item">
                         <a href="{{ route('seller.product_query.index') }}"
                             class="aiz-side-nav-link {{ areActiveRoutes(['seller.product_query.index']) }}">
@@ -295,7 +295,7 @@
 
                         </a>
                     </li>
-                @endif
+                @endif --}}
 
                 @php
                     $support_ticket = DB::table('tickets')
@@ -303,7 +303,7 @@
                         ->where('user_id', Auth::user()->id)
                         ->count();
                 @endphp
-                <li class="aiz-side-nav-item">
+                {{-- <li class="aiz-side-nav-item">
                     <a href="{{ route('seller.support_ticket.index') }}"
                         class="aiz-side-nav-link {{ areActiveRoutes(['seller.support_ticket.index']) }}">
                         <i class="las la-atom aiz-side-nav-icon"></i>
@@ -312,7 +312,7 @@
                             <span class="badge badge-inline badge-success">{{ $support_ticket }}</span>
                         @endif
                     </a>
-                </li>
+                </li> --}}
 
             </ul><!-- .aiz-side-nav -->
         </div><!-- .aiz-side-nav-wrap -->
