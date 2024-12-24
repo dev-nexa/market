@@ -1,3 +1,5 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
 <div class="text-left">
     <!-- Product Name -->
     <h2 class="mb-4 fs-16 fw-700 text-dark">
@@ -155,6 +157,85 @@
             </div>
         @endif
     </div>
+    <div class="d-flex flex-wrap align-items-center">
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-car"></i>
+            <span class="ml-2 type">Drive Type:</span>
+            <span class="ml-1 value">Four-Wheel Drive</span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-gas-pump"></i>
+            <span class="ml-2 type">Fuel Type:</span>
+            <span class="ml-1 value">Gasoline</span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-cogs"></i>
+            <span class="ml-2 type">Transmission:</span>
+            <span class="ml-1 value">Automatic</span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="ml-2 type">Mileage:</span>
+            <span class="ml-1 value">20,000 km</span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-calendar-alt"></i>
+            <span class="ml-2 type">Year:</span>
+            <span class="ml-1 value">2022</span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-palette"></i>
+            <span class="ml-2 type">Color:</span>
+            <span class="ml-1 value">Red</span>
+        </div>
+    </div>
+    
+    
+<style>
+    .car-detail {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    background-color: #f8f9fa;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    transition: transform 0.3s, box-shadow 0.3s;
+    flex: 1 1 100%; /* Ensure full width on mobile */
+}
+
+.car-detail:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+}
+
+.car-detail i {
+    font-size: 20px; /* Reduced size */
+    color: #d4af37;
+    margin-right: 10px;
+}
+
+.car-detail .type {
+    font-size: 16px; /* Reduced size */
+    color: #333;
+    font-weight: bold;
+}
+
+.car-detail .value {
+    font-size: 16px; /* Reduced size */
+    color: #d4af37;
+}
+
+@media (min-width: 576px) {
+    .car-detail {
+        flex: 1 1 auto; /* Adjust width on larger screens */
+    }
+}
+
+</style>    
+
+
+
 
     <hr>
 
@@ -501,7 +582,7 @@
                         <i class="la la-share"></i> {{ translate($detailedProduct->external_link_btn) }}
                     </a>
                 @else
-                    <button type="button"
+                    {{-- <button type="button"
                         class="btn btn-secondary-base mr-2 add-to-cart fw-600 min-w-150px rounded-0 text-white"
                         @if (Auth::check() || get_Setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif>
                         <i class="las la-shopping-bag"></i> {{ translate('Add to cart') }}
@@ -509,13 +590,13 @@
                     <button type="button" class="btn btn-primary buy-now fw-600 add-to-cart min-w-150px rounded-0"
                         @if (Auth::check() || get_Setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif>
                         <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
-                    </button>
+                    </button> TODO--}}
                 @endif
                 <button type="button" class="btn btn-secondary out-of-stock fw-600 d-none" disabled>
                     <i class="la la-cart-arrow-down"></i> {{ translate('Out of Stock') }}
                 </button>
             @elseif ($detailedProduct->digital == 1)
-                <button type="button"
+                {{-- <button type="button"
                     class="btn btn-secondary-base mr-2 add-to-cart fw-600 min-w-150px rounded-0 text-white"
                     @if (Auth::check() || get_Setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif>
                     <i class="las la-shopping-bag"></i> {{ translate('Add to cart') }}
@@ -523,7 +604,7 @@
                 <button type="button" class="btn btn-primary buy-now fw-600 add-to-cart min-w-150px rounded-0"
                     @if (Auth::check() || get_Setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif>
                     <i class="la la-shopping-cart"></i> {{ translate('Buy Now') }}
-                </button>
+                </button> TODO --}}
             @endif
         </div>
 
