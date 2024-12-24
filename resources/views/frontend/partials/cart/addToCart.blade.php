@@ -235,8 +235,8 @@
 
                 </form>
 
-                <!-- Add to cart -->
-                <div class="mt-3">
+                <!-- Add to cart TODO-->
+                {{-- <div class="mt-3">
                     @if ($product->digital == 1)
                         <button type="button" class="btn btn-primary rounded-0 buy-now fw-600 add-to-cart" 
                             @if (Auth::check() || get_Setting('guest_checkout_activation') == 1) onclick="addToCart()" @else onclick="showLoginModal()" @endif
@@ -262,7 +262,7 @@
                     <button type="button" class="btn btn-secondary rounded-0 out-of-stock fw-600 d-none" disabled>
                         <i class="la la-cart-arrow-down"></i>{{ translate('Out of Stock')}}
                     </button>
-                </div>
+                </div> --}}
 
             </div>
         </div>

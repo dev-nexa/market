@@ -406,8 +406,8 @@
                     </div>
                 @endif
 
-                <!-- Quantity + Add to cart -->
-                <div class="row no-gutters mb-3">
+                <!-- Quantity + Add to cart TODO-->
+                {{-- <div class="row no-gutters mb-3">
                     <div class="col-sm-2">
                         <div class="text-secondary fs-14 fw-400 mt-2">{{ translate('Quantity') }}</div>
                     </div>
@@ -443,7 +443,7 @@
                             </div>
                         </div>
                     </div>
-                </div>
+                </div> --}}
             @else
                 <!-- Quantity -->
                 <input type="hidden" name="quantity" value="1">
