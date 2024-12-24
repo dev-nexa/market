@@ -87,6 +87,53 @@
             <a href="{{ route('products.brand', $detailedProduct->brand->slug) }}"
                 class="text-reset hov-text-primary fs-14 fw-700">{{ $detailedProduct->brand->name }}</a>
         </div>
+
+        <div class="row no-gutters mb-3">
+            <div class="col-sm-2">
+                <div class="text-secondary fs-14 fw-400">{{ translate('Price') }}</div>
+            </div>
+            <div class="col-sm-10">
+                <div class="d-flex align-items-center">
+                    <!-- Discount Price -->
+                    <strong class="fs-20 fw-800 text-primary">
+                        {{ home_discounted_price($detailedProduct) }}
+                    </strong>
+                    <!-- Unit -->
+                    {{-- @if ($detailedProduct->unit != null)
+                        <span class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span>
+                    @endif TODO --}}
+                    <!-- Club Point -->
+                    @if (addon_is_activated('club_point') && $detailedProduct->earn_point > 0)
+                        <div class="ml-2 bg-secondary-base d-flex justify-content-center align-items-center px-3 py-1"
+                            style="width: fit-content;">
+                            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16"
+                                viewBox="0 0 16 16">
+                                <g id="Group_23922" data-name="Group 23922" transform="translate(-973 -633)">
+                                    <circle id="Ellipse_39" data-name="Ellipse 39" cx="8"
+                                        cy="8" r="8" transform="translate(973 633)"
+                                        fill="#fff" />
+                                    <g id="Group_23920" data-name="Group 23920"
+                                        transform="translate(973 633)">
+                                        <path id="Path_28698" data-name="Path 28698"
+                                            d="M10.222,4H5.778L4,6.667,8,12l4-5.333Z" transform="translate(0 0)"
+                                            fill="#f3af3d" />
+                                        <path id="Path_28699" data-name="Path 28699"
+                                            d="M7.11,4h-1.333L4,6.667,8,12,5.11,6.667Z" transform="translate(0 0)"
+                                            fill="#f3af3d" opacity="0.5" />
+                                        <path id="Path_28700" data-name="Path 28700"
+                                            d="M16.888,4h1.333L20,6.667,16,12l2.222-5.333Z" transform="translate(-7.993 0)"
+                                            fill="#f3af3d" />
+                                    </g>
+                                </g>
+                            </svg>
+                            <small class="fs-13 fw-600 text-white ml-2">{{ translate('Club Point') }}:
+                                {{ $detailedProduct->earn_point }}</small>
+                        </div>
+                    @endif
+                </div>
+            </div>
+        </div>
+        
     @endif
 
     {{-- Warranty --}}
@@ -116,36 +163,10 @@
                 <a href="{{ route('shop.visit', $detailedProduct->user->shop->slug) }}"
                     class="text-reset hov-text-primary fs-14 fw-700">{{ $detailedProduct->user->shop->name }}</a>
             @else
-                <p class="mb-0 fs-14 fw-700">{{ translate('Inhouse product') }}</p>
+                {{-- <p class="mb-0 fs-14 fw-700">{{ translate('Inhouse product') }}</p> TODO--}}
             @endif
         </div>
-        <!-- Messase to seller -->
-        @if (get_setting('conversation_system') == 1)
-            <div class="">
-                <button class="btn btn-sm btn-soft-secondary-base btn-outline-secondary-base hov-svg-white hov-text-white rounded-4"
-                    onclick="show_chat_modal()">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16"
-                        class="mr-2 has-transition">
-                        <g id="Group_23918" data-name="Group 23918" transform="translate(1053.151 256.688)">
-                            <path id="Path_3012" data-name="Path 3012"
-                                d="M134.849,88.312h-8a2,2,0,0,0-2,2v5a2,2,0,0,0,2,2v3l2.4-3h5.6a2,2,0,0,0,2-2v-5a2,2,0,0,0-2-2m1,7a1,1,0,0,1-1,1h-8a1,1,0,0,1-1-1v-5a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Z"
-                                transform="translate(-1178 -341)" fill="{{ get_setting('secondary_base_color', '#ffc519') }}" />
-                            <path id="Path_3013" data-name="Path 3013"
-                                d="M134.849,81.312h8a1,1,0,0,1,1,1v5a1,1,0,0,1-1,1h-.5a.5.5,0,0,0,0,1h.5a2,2,0,0,0,2-2v-5a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v.5a.5.5,0,0,0,1,0v-.5a1,1,0,0,1,1-1"
-                                transform="translate(-1182 -337)" fill="{{ get_setting('secondary_base_color', '#ffc519') }}" />
-                            <path id="Path_3014" data-name="Path 3014"
-                                d="M131.349,93.312h5a.5.5,0,0,1,0,1h-5a.5.5,0,0,1,0-1"
-                                transform="translate(-1181 -343.5)" fill="{{ get_setting('secondary_base_color', '#ffc519') }}" />
-                            <path id="Path_3015" data-name="Path 3015"
-                                d="M131.349,99.312h5a.5.5,0,1,1,0,1h-5a.5.5,0,1,1,0-1"
-                                transform="translate(-1181 -346.5)" fill="{{ get_setting('secondary_base_color', '#ffc519') }}" />
-                        </g>
-                    </svg>
-
-                    {{ translate('Message Seller') }}
-                </button>
-            </div>
-        @endif
+        
         <!-- Size guide -->
         @php
             $sizeChartId = ($detailedProduct->main_category && $detailedProduct->main_category->sizeChart) ? $detailedProduct->main_category->sizeChart->id : 0;
@@ -214,13 +235,50 @@
             <span class="ml-1 value"></span>
         </div>
     </div>
+
+    <!-- Messase to seller -->
+    @if (get_setting('conversation_system') == 1)
+    <br />
+    <div class="">
+        
+        <!-- Message to seller -->
+@if (get_setting('conversation_system') == 1)
+<br />
+<div class="">
+    <div class="d-flex flex-wrap align-items-center">
+        <button class="btn btn-sm btn-primary mr-2 mb-2" onclick="call_now()">
+            <i class="fas fa-phone-alt mr-2"></i>
+            {{ translate('Call Now') }}
+        </button>
+        <button class="btn btn-sm btn-success mr-2 mb-2" onclick="send_whatsapp_message()">
+            <i class="fab fa-whatsapp mr-2"></i>
+            {{ translate('Send Message on WhatsApp') }}
+        </button>
+        <button class="btn btn-sm btn-soft-secondary-base btn-outline-secondary-base hov-svg-white hov-text-white rounded-4" onclick="show_chat_modal()">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 16 16" class="mr-2 has-transition">
+                <g id="Group_23918" data-name="Group 23918" transform="translate(1053.151 256.688)">
+                    <path id="Path_3012" data-name="Path 3012" d="M134.849,88.312h-8a2,2,0,0,0-2,2v5a2,2,0,0,0,2,2v3l2.4-3h5.6a2,2,0,0,0,2-2v-5a2,2,0,0,0-2-2m1,7a1,1,0,0,1-1,1h-8a1,1,0,0,1-1-1v-5a1,1,0,0,1,1-1h8a1,1,0,0,1,1,1Z" transform="translate(-1178 -341)" fill="{{ get_setting('secondary_base_color', '#ffc519') }}" />
+                    <path id="Path_3013" data-name="Path 3013" d="M134.849,81.312h8a1,1,0,0,1,1,1v5a1,1,0,0,1-1,1h-.5a.5.5,0,0,0,0,1h.5a2,2,0,0,0,2-2v-5a2,2,0,0,0-2-2h-8a2,2,0,0,0-2,2v.5a.5.5,0,0,0,1,0v-.5a1,1,0,0,1,1-1" transform="translate(-1182 -337)" fill="{{ get_setting('secondary_base_color', '#ffc519') }}" />
+                    <path id="Path_3014" data-name="Path 3014" d="M131.349,93.312h5a.5.5,0,0,1,0,1h-5a.5.5,0,0,1,0-1" transform="translate(-1181 -343.5)" fill="{{ get_setting('secondary_base_color', '#ffc519') }}" />
+                    <path id="Path_3015" data-name="Path 3015" d="M131.349,99.312h5a.5.5,0,1,1,0,1h-5a.5.5,0,1,1,0-1" transform="translate(-1181 -346.5)" fill="{{ get_setting('secondary_base_color', '#ffc519') }}" />
+                </g>
+            </svg>
+            {{ translate('Message Seller') }}
+        </button>
+    </div>
+</div>
+@endif
+
+    </div>
+@endif
+    
     
     
     
     
     
 <style>
-    .car-detail {
+   .car-detail {
     display: flex;
     align-items: center;
     margin: 10px;
@@ -230,8 +288,6 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     flex: 1 1 100%; /* Ensure full width on mobile */
-    
-
 }
 
 .car-detail:hover {
@@ -246,7 +302,7 @@
 }
 
 .car-detail .type {
-    font-size: 16px; /* Reduced size */
+    font-size: 13px; /* Reduced size */
     color: #333;
     font-weight: bold;
 }
@@ -261,6 +317,39 @@
         flex: 1 1 auto; /* Adjust width on larger screens */
     }
 }
+
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 10px 20px;
+    border-radius: 8px;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.btn:hover {
+    transform: translateY(-2px);
+}
+
+.btn-primary {
+    background-color: #007bff;
+    color: #fff;
+}
+
+.btn-success {
+    background-color: #28a745;
+    color: #fff;
+}
+
+.btn-soft-secondary-base {
+    background-color: #ffc519;
+    color: #fff;
+}
+
+.btn i {
+    font-size: 16px;
+}
+
 
 </style>    
 
@@ -294,9 +383,9 @@
                 <span class="opacity-50 fs-20">
                     {{ single_price($detailedProduct->starting_bid) }}
                 </span>
-                @if ($detailedProduct->unit != null)
+                {{-- @if ($detailedProduct->unit != null)
                     <span class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span>
-                @endif
+                @endif TODO --}}
             </div>
         </div>
 
@@ -368,9 +457,9 @@
                                 {{ home_price($detailedProduct) }}
                             </del>
                             <!-- Unit -->
-                            @if ($detailedProduct->unit != null)
+                            {{-- @if ($detailedProduct->unit != null)
                                 <span class="opacity-70 ml-1">/{{ $detailedProduct->getTranslation('unit') }}</span>
-                            @endif
+                            @endif TODO --}}
                             <!-- Discount percentage -->
                             @if (discount_in_percentage($detailedProduct) > 0)
                                 <span class="bg-primary ml-2 fs-11 fw-700 text-white w-35px text-center p-1"
@@ -408,51 +497,7 @@
                     </div>
                 </div>
             @else
-                <div class="row no-gutters mb-3">
-                    <div class="col-sm-2">
-                        <div class="text-secondary fs-14 fw-400">{{ translate('Price') }}</div>
-                    </div>
-                    <div class="col-sm-10">
-                        <div class="d-flex align-items-center">
-                            <!-- Discount Price -->
-                            <strong class="fs-16 fw-700 text-primary">
-                                {{ home_discounted_price($detailedProduct) }}
-                            </strong>
-                            <!-- Unit -->
-                            @if ($detailedProduct->unit != null)
-                                <span class="opacity-70">/{{ $detailedProduct->getTranslation('unit') }}</span>
-                            @endif
-                            <!-- Club Point -->
-                            @if (addon_is_activated('club_point') && $detailedProduct->earn_point > 0)
-                                <div class="ml-2 bg-secondary-base d-flex justify-content-center align-items-center px-3 py-1"
-                                    style="width: fit-content;">
-                                    <svg xmlns="http://www.w3.org/2000/svg" width="12" height="12"
-                                        viewBox="0 0 12 12">
-                                        <g id="Group_23922" data-name="Group 23922" transform="translate(-973 -633)">
-                                            <circle id="Ellipse_39" data-name="Ellipse 39" cx="6"
-                                                cy="6" r="6" transform="translate(973 633)"
-                                                fill="#fff" />
-                                            <g id="Group_23920" data-name="Group 23920"
-                                                transform="translate(973 633)">
-                                                <path id="Path_28698" data-name="Path 28698"
-                                                    d="M7.667,3H4.333L3,5,6,9,9,5Z" transform="translate(0 0)"
-                                                    fill="#f3af3d" />
-                                                <path id="Path_28699" data-name="Path 28699"
-                                                    d="M5.33,3h-1L3,5,6,9,4.331,5Z" transform="translate(0 0)"
-                                                    fill="#f3af3d" opacity="0.5" />
-                                                <path id="Path_28700" data-name="Path 28700"
-                                                    d="M12.666,3h1L15,5,12,9l1.664-4Z" transform="translate(-5.995 0)"
-                                                    fill="#f3af3d" />
-                                            </g>
-                                        </g>
-                                    </svg>
-                                    <small class="fs-11 fw-500 text-white ml-2">{{ translate('Club Point') }}:
-                                        {{ $detailedProduct->earn_point }}</small>
-                                </div>
-                            @endif
-                        </div>
-                    </div>
-                </div>
+                
             @endif
         @endif
     @endif
