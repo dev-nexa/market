@@ -236,7 +236,7 @@
                     <a href="{{ route('seller.shop.index') }}"
                         class="aiz-side-nav-link {{ areActiveRoutes(['seller.shop.index']) }}">
                         <i class="las la-cog aiz-side-nav-icon"></i>
-                        <span class="aiz-side-nav-text">{{ translate('Shop Settings') }}</span>
+                        <span class="aiz-side-nav-text">{{ translate('Shop Setting') }}</span>
                     </a>
                 </li>
 
