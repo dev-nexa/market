@@ -178,63 +178,6 @@
             </div>
         @endif
     </div>
-    <div class="d-flex flex-wrap align-items-center">
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-tachometer-alt"></i>
-            <span class="ml-2 type">{{ translate('Brand:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-calendar-alt"></i>
-            <span class="ml-2 type">{{ translate('Year:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-gas-pump"></i>
-            <span class="ml-2 type">{{ translate('Fuel Type:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-car"></i>
-            <span class="ml-2 type">{{ translate('Drive Type:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-cogs"></i>
-            <span class="ml-2 type">{{ translate('Transmission:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-tachometer-alt"></i>
-            <span class="ml-2 type">{{ translate('Mileage:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-palette"></i>
-            <span class="ml-2 type">{{ translate('Color:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-tachometer-alt"></i>
-            <span class="ml-2 type">{{ translate('Engine Capacity:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-tachometer-alt"></i>
-            <span class="ml-2 type">{{ translate('Horsepower:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-tachometer-alt"></i>
-            <span class="ml-2 type">{{ translate('Torque:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-tachometer-alt"></i>
-            <span class="ml-2 type">{{ translate('Top Speed:') }}</span>
-            <span class="ml-1 value"></span>
-        </div>
-    </div>
 
     <!-- Messase to seller -->
     @if (get_setting('conversation_system') == 1)
@@ -271,90 +214,6 @@
 
     </div>
 @endif
-    
-    
-    
-    
-    
-    
-<style>
-   .car-detail {
-    display: flex;
-    align-items: center;
-    margin: 10px;
-    padding: 10px;
-    border-radius: 8px;
-    background-color: #f8f9fa;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    transition: transform 0.3s, box-shadow 0.3s;
-    flex: 1 1 100%; /* Ensure full width on mobile */
-}
-
-.car-detail:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-}
-
-.car-detail i {
-    font-size: 20px; /* Reduced size */
-    color: #d4af37;
-    margin-right: 10px;
-}
-
-.car-detail .type {
-    font-size: 13px; /* Reduced size */
-    color: #333;
-    font-weight: bold;
-}
-
-.car-detail .value {
-    font-size: 16px; /* Reduced size */
-    color: #d4af37;
-}
-
-@media (min-width: 576px) {
-    .car-detail {
-        flex: 1 1 auto; /* Adjust width on larger screens */
-    }
-}
-
-.btn {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    padding: 10px 20px;
-    border-radius: 8px;
-    transition: background-color 0.3s, transform 0.3s;
-}
-
-.btn:hover {
-    transform: translateY(-2px);
-}
-
-.btn-primary {
-    background-color: #007bff;
-    color: #fff;
-}
-
-.btn-success {
-    background-color: #28a745;
-    color: #fff;
-}
-
-.btn-soft-secondary-base {
-    background-color: #ffc519;
-    color: #fff;
-}
-
-.btn i {
-    font-size: 16px;
-}
-
-
-</style>    
-
-
-
 
     <hr>
 
@@ -501,6 +360,84 @@
             @endif
         @endif
     @endif
+    
+    <style>
+        .car-detail {
+         display: flex;
+         align-items: center;
+         margin: 10px;
+         padding: 10px;
+         border-radius: 8px;
+         background-color: #f8f9fa;
+         box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+         transition: transform 0.3s, box-shadow 0.3s;
+         flex: 1 1 100%; /* Ensure full width on mobile */
+     }
+     
+     .car-detail:hover {
+         transform: translateY(-5px);
+         box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+     }
+     
+     .car-detail i {
+         font-size: 20px; /* Reduced size */
+         color: #d4af37;
+         margin-right: 10px;
+     }
+     
+     .car-detail .type {
+         font-size: 13px; /* Reduced size */
+         color: #333;
+         font-weight: bold;
+     }
+     
+     .car-detail .value {
+         font-size: 16px; /* Reduced size */
+         color: #d4af37;
+     }
+     
+     @media (min-width: 576px) {
+         .car-detail {
+             flex: 1 1 auto; /* Adjust width on larger screens */
+         }
+     }
+     
+     .btn {
+         display: flex;
+         align-items: center;
+         justify-content: center;
+         padding: 10px 20px;
+         border-radius: 8px;
+         transition: background-color 0.3s, transform 0.3s;
+     }
+     
+     .btn:hover {
+         transform: translateY(-2px);
+     }
+     
+     .btn-primary {
+         background-color: #007bff;
+         color: #fff;
+     }
+     
+     .btn-success {
+         background-color: #28a745;
+         color: #fff;
+     }
+     
+     .btn-soft-secondary-base {
+         background-color: #ffc519;
+         color: #fff;
+     }
+     
+     .btn i {
+         font-size: 16px;
+     }
+     
+     
+     </style>    
+     
+     
 
     @if ($detailedProduct->auction_product != 1)
         <form id="option-choice-form">
@@ -510,30 +447,28 @@
             @if ($detailedProduct->digital == 0)
                 <!-- Choice Options -->
                 @if ($detailedProduct->choice_options != null)
+                <div class="value d-flex flex-wrap align-items-center">
                     @foreach (json_decode($detailedProduct->choice_options) as $key => $choice)
-                        <div class="row no-gutters mb-3">
-                            <div class="col-sm-2">
-                                <div class="text-secondary fs-14 fw-400 mt-2 ">
-                                    {{ get_single_attribute_name($choice->attribute_id) }}
-                                </div>
-                            </div>
-                            <div class="col-sm-10">
-                                <div class="aiz-radio-inline">
-                                    @foreach ($choice->values as $key => $value)
-                                        <label class="aiz-megabox pl-0 mr-2 mb-0">
-                                            <input type="radio" name="attribute_id_{{ $choice->attribute_id }}"
-                                                value="{{ $value }}"
-                                                @if ($key == 0) checked @endif>
-                                            <span
-                                                class="aiz-megabox-elem rounded-0 d-flex align-items-center justify-content-center py-1 px-3">
-                                                {{ $value }}
-                                            </span>
-                                        </label>
-                                    @endforeach
-                                </div>
-                            </div>
+                        <div class="d-flex align-items-center mr-4 car-detail">
+                            <i class="{{ get_single_attribute_icon($choice->attribute_id) }}"></i>
+                            <span class="ml-2 type">{{ get_single_attribute_name($choice->attribute_id) }}</span>
+                            <span class="ml-1 value">
+                                
+                                @foreach ($choice->values as $key => $value)
+                                    <label class="aiz-megabox pl-0 mr-2 mb-0">
+                                        <input type="radio" name="attribute_id_{{ $choice->attribute_id }}"
+                                            value="{{ $value }}"
+                                            @if ($key == 0) checked @endif>
+                                        <span
+                                            class="aiz-megabox-elem rounded-0 d-flex align-items-center justify-content-center py-1 px-3">
+                                            {{ $value }}
+                                        </span>
+                                    </label>
+                                @endforeach
+                            </span>
                         </div>
-                    @endforeach
+                        @endforeach
+                    </div>
                 @endif
 
                 <!-- Color Options -->
