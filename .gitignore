@@ -3,7 +3,6 @@
 .env.*.php
 .env.php
 /node_modules
-/public/uploads
 /storage/*.key
 /storage/debugbar
 /vendor
