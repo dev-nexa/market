@@ -159,36 +159,64 @@
     </div>
     <div class="d-flex flex-wrap align-items-center">
         <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-car"></i>
-            <span class="ml-2 type">Drive Type:</span>
-            <span class="ml-1 value">Four-Wheel Drive</span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-gas-pump"></i>
-            <span class="ml-2 type">Fuel Type:</span>
-            <span class="ml-1 value">Gasoline</span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
-            <i class="fas fa-cogs"></i>
-            <span class="ml-2 type">Transmission:</span>
-            <span class="ml-1 value">Automatic</span>
-        </div>
-        <div class="d-flex align-items-center mr-4 car-detail">
             <i class="fas fa-tachometer-alt"></i>
-            <span class="ml-2 type">Mileage:</span>
-            <span class="ml-1 value">20,000 km</span>
+            <span class="ml-2 type">{{ translate('Brand:') }}</span>
+            <span class="ml-1 value"></span>
         </div>
         <div class="d-flex align-items-center mr-4 car-detail">
             <i class="fas fa-calendar-alt"></i>
-            <span class="ml-2 type">Year:</span>
-            <span class="ml-1 value">2022</span>
+            <span class="ml-2 type">{{ translate('Year:') }}</span>
+            <span class="ml-1 value"></span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-gas-pump"></i>
+            <span class="ml-2 type">{{ translate('Fuel Type:') }}</span>
+            <span class="ml-1 value"></span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-car"></i>
+            <span class="ml-2 type">{{ translate('Drive Type:') }}</span>
+            <span class="ml-1 value"></span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-cogs"></i>
+            <span class="ml-2 type">{{ translate('Transmission:') }}</span>
+            <span class="ml-1 value"></span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="ml-2 type">{{ translate('Mileage:') }}</span>
+            <span class="ml-1 value"></span>
         </div>
         <div class="d-flex align-items-center mr-4 car-detail">
             <i class="fas fa-palette"></i>
-            <span class="ml-2 type">Color:</span>
-            <span class="ml-1 value">Red</span>
+            <span class="ml-2 type">{{ translate('Color:') }}</span>
+            <span class="ml-1 value"></span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="ml-2 type">{{ translate('Engine Capacity:') }}</span>
+            <span class="ml-1 value"></span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="ml-2 type">{{ translate('Horsepower:') }}</span>
+            <span class="ml-1 value"></span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="ml-2 type">{{ translate('Torque:') }}</span>
+            <span class="ml-1 value"></span>
+        </div>
+        <div class="d-flex align-items-center mr-4 car-detail">
+            <i class="fas fa-tachometer-alt"></i>
+            <span class="ml-2 type">{{ translate('Top Speed:') }}</span>
+            <span class="ml-1 value"></span>
         </div>
     </div>
+    
+    
+    
     
     
 <style>
@@ -202,6 +230,8 @@
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
     transition: transform 0.3s, box-shadow 0.3s;
     flex: 1 1 100%; /* Ensure full width on mobile */
+    
+
 }
 
 .car-detail:hover {
