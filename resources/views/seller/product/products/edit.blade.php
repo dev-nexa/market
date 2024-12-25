@@ -64,36 +64,36 @@
                             </select>
                         </div>
                     </div>
-                    <div class="form-group row">
+                    {{-- <div class="form-group row">
                         <label class="col-lg-3 col-from-label">{{translate('Unit')}} <i class="las la-language text-danger" title="{{translate('Translatable')}}"></i></label>
                         <div class="col-lg-8">
                             <input type="text" class="form-control" name="unit"
                                 placeholder="{{ translate('Unit (e.g. KG, Pc etc)') }}"
                                 value="{{$product->getTranslation('unit', $lang)}}" required>
                         </div>
-                    </div>
-                    <div class="form-group row">
+                    </div> --}}
+                    {{-- <div class="form-group row">
                         <label class="col-md-3 col-from-label">{{translate('Weight')}} <small>({{ translate('In Kg') }})</small></label>
                         <div class="col-md-8">
                             <input type="number" class="form-control" name="weight" value="{{ $product->weight }}" step="0.01" placeholder="0.00">
                         </div>
-                    </div>
-                    <div class="form-group row">
+                    </div> --}}
+                    {{-- <div class="form-group row">
                         <label class="col-lg-3 col-from-label">{{translate('Minimum Purchase Qty')}}</label>
                         <div class="col-lg-8">
                             <input type="number" lang="en" class="form-control" name="min_qty"
                                 value="@if($product->min_qty <= 1){{1}}@else{{$product->min_qty}}@endif" min="1"
                                 required>
                         </div>
-                    </div>
-                    <div class="form-group row">
+                    </div> --}}
+                    {{-- <div class="form-group row">
                         <label class="col-lg-3 col-from-label">{{translate('Tags')}}</label>
                         <div class="col-lg-8">
                             <input type="text" class="form-control aiz-tag-input" name="tags[]" id="tags"
                                 value="{{ $product->tags }}" placeholder="{{ translate('Type to add a tag') }}"
                                 data-role="tagsinput">
                         </div>
-                    </div>
+                    </div> --}}
 
                     @if (addon_is_activated('pos_system'))
                     <div class="form-group row">
@@ -123,6 +123,7 @@
                                 <div class="form-control file-amount">{{ translate('Choose File') }}</div>
                                 <input type="hidden" name="photos" value="{{ $product->photos }}"
                                     class="selected-files">
+                                <input type="hidden" name="meta_img" class="selected-files">
                             </div>
                             <div class="file-preview box sm">
                             </div>
@@ -303,14 +304,14 @@
                                     placeholder="{{translate('Quantity')}}" name="current_stock" class="form-control">
                             </div>
                         </div>
-                        <div class="form-group row">
+                        {{-- <div class="form-group row">
                             <label class="col-md-3 col-from-label">
                                 {{translate('SKU')}}
                             </label>
                             <div class="col-md-6">
                                 <input type="text" placeholder="{{ translate('SKU') }}" value="{{ $product->stocks->first()->sku }}" name="sku" class="form-control">
                             </div>
-                        </div>
+                        </div> --}}
                     </div>
                     @if(get_setting('product_external_link_for_seller') == 1)
                         <div class="form-group row">
@@ -353,7 +354,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate('PDF Specification')}}</h5>
                 </div>
@@ -374,8 +375,8 @@
                         </div>
                     </div>
                 </div>
-            </div>
-            <div class="card">
+            </div> --}}
+            {{-- <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate('SEO Meta Tags')}}</h5>
                 </div>
@@ -417,7 +418,21 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
+            <input type="hidden" id="slug" name="slug"
+                                value="{{ $product->slug }}" class="form-control">
+
+            <input type="hidden" name="meta_title">
+            <input type="hidden" name="meta_description">
+            <script>
+                document.getElementById('product_name').addEventListener('input', function() {
+                    document.getElementById('meta_title').value = this.value;
+                });
+            
+                document.getElementById('product_description').addEventListener('input', function() {
+                    document.getElementById('meta_description').value = this.value;
+                });
+            </script>
 
             {{-- Refund --}}
             @if (addon_is_activated('refund_request'))
@@ -465,7 +480,7 @@
             @endif
 
             {{-- Warranty --}}
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{ translate('Warranty') }}</h5>
                 </div>
@@ -518,7 +533,7 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
 
             {{-- Frequently Bought Products --}}
@@ -674,7 +689,7 @@
                 </div>
             </div>
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0 h6" class="dropdown-toggle" data-toggle="collapse" data-target="#collapse_2">
                         {{translate('Shipping Configuration')}}
@@ -731,9 +746,9 @@
                     </p>
                     @endif
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate('Low Stock Quantity Warning')}}</h5>
                 </div>
@@ -746,9 +761,9 @@
                             step="1" class="form-control">
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0 h6">
                         {{translate('Stock Visibility State')}}
@@ -791,9 +806,9 @@
                     </div>
 
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate('Cash On Delivery')}}</h5>
                 </div>
@@ -819,9 +834,9 @@
                     </p>
                     @endif
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate('Estimate Shipping Time')}}</h5>
                 </div>
@@ -839,9 +854,9 @@
                         </div>
                     </div>
                 </div>
-            </div>
+            </div> --}}
 
-            <div class="card">
+            {{-- <div class="card">
                 <div class="card-header">
                     <h5 class="mb-0 h6">{{translate('VAT & Tax')}}</h5>
                 </div>
@@ -881,7 +896,7 @@
                     </div>
                     @endforeach
                 </div>
-            </div>
+            </div> --}}
         </div>
         <div class="col-12">
             <div class="mar-all text-right mb-2">

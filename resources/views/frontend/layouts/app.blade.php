@@ -589,13 +589,15 @@
                         AIZ.plugins.notify('success', "{{ translate('Item has been added to wishlist') }}");
                     }
                     else{
-                        AIZ.plugins.notify('warning', "{{ translate('Please login first') }}");
+                        // AIZ.plugins.notify('warning', "{{ translate('Please login first') }}"); TODO 
+                        $('#login_modal').modal();
                     }
                 });
             @elseif(Auth::check() && Auth::user()->user_type != 'customer')
                 AIZ.plugins.notify('warning', "{{ translate('Please Login as a customer to add products to the WishList.') }}");
             @else
-                AIZ.plugins.notify('warning', "{{ translate('Please login first') }}");
+                // AIZ.plugins.notify('warning', "{{ translate('Please login first') }}"); TODO 
+                $('#login_modal').modal();
             @endif
         }
 

@@ -77,11 +77,12 @@
     <section class="mb-4">
         <div class="container">
             @if ($detailedProduct->auction_product)
-                <!-- Reviews & Ratings -->
-                @include('frontend.product_details.review_section')
                 
                 <!-- Description, Video, Downloads -->
                 @include('frontend.product_details.description')
+
+                <!-- Reviews & Ratings -->
+                @include('frontend.product_details.review_section')
                 
                 <!-- Product Query -->
                 @include('frontend.product_details.product_queries')
@@ -101,12 +102,12 @@
                     <!-- Right side -->
                     <div class="col-lg-9">
                         
-                        <!-- Reviews & Ratings -->
-                        @include('frontend.product_details.review_section')
-
                         <!-- Description, Video, Downloads -->
                         @include('frontend.product_details.description')
                         
+                        <!-- Reviews & Ratings -->
+                        @include('frontend.product_details.review_section')
+
                         <!-- Frequently Bought products -->
                         @include('frontend.product_details.frequently_bought_products')
 
@@ -385,7 +386,6 @@
 
         function product_review(product_id) {
             @if (isCustomer())
-                @if ($review_status == 1)
                     $.post('{{ route('product_review_modal') }}', {
                         _token: '{{ @csrf_token() }}',
                         product_id: product_id
@@ -396,9 +396,6 @@
                         });
                         AIZ.extra.inputRating();
                     });
-                @else
-                    AIZ.plugins.notify('warning', '{{ translate("Sorry, You need to buy this product to give review.") }}');
-                @endif
             @elseif (Auth::check() && !isCustomer())
                 AIZ.plugins.notify('warning', '{{ translate("Sorry, Only customers can give review.") }}');
             @else

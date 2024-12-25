@@ -267,7 +267,7 @@
                 </li> --}}
 
                 {{-- Conversations --}}
-                {{-- @if (get_setting('conversation_system') == 1)
+                @if (get_setting('conversation_system') == 1)
                     @php
                         $conversation = \App\Models\Conversation::where('sender_id', Auth::user()->id)
                             ->where('sender_viewed', 0)
@@ -283,10 +283,10 @@
                             @endif
                         </a>
                     </li>
-                @endif --}}
+                @endif
 
                 {{-- Product Queries --}}
-                {{-- @if (get_setting('product_query_activation') == 1)
+                @if (get_setting('product_query_activation') == 1)
                     <li class="aiz-side-nav-item">
                         <a href="{{ route('seller.product_query.index') }}"
                             class="aiz-side-nav-link {{ areActiveRoutes(['seller.product_query.index']) }}">
@@ -295,7 +295,7 @@
 
                         </a>
                     </li>
-                @endif --}}
+                @endif
 
                 @php
                     $support_ticket = DB::table('tickets')

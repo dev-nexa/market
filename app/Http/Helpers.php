@@ -2011,6 +2011,15 @@ if (!function_exists('get_single_attribute_name')) {
     }
 }
 
+if (!function_exists('get_single_attribute_icon')) {
+    function get_single_attribute_icon($attribute)
+    {
+        $attribute_query = Attribute::query();
+        $attribute_data = $attribute_query->find($attribute);
+        return $attribute_data ? $attribute_data->icon : ''; // افترض وجود عمود "icon"
+    }
+}
+
 // Get user cart
 if (!function_exists('get_user_cart')) {
     function get_user_cart()

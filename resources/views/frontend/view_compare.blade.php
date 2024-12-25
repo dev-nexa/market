@@ -63,12 +63,12 @@
                                                     @endif
                                                 </h5>
                                             </div>
-                                            <!-- Add to cart -->
-                                            <div class="p-4">
+                                            <!-- Add to cart TODO-->
+                                            {{-- <div class="p-4">
                                                 <button type="button" class="btn btn-block btn-dark rounded-0 fs-13 fw-700 has-transition opacity-80 hov-opacity-100" onclick="showAddToCartModal({{ $item }})">
                                                     {{ translate('Add to cart')}}
                                                 </button>
-                                            </div>
+                                            </div> --}}
                                         </div>
                                     </div>
                                 @endforeach

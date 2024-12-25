@@ -28,13 +28,13 @@ class ProductService
         } else {
             $user_id = User::where('user_type', 'admin')->first()->id;
         }
-        $tags = array();
-        if ($collection['tags'][0] != null) {
-            foreach (json_decode($collection['tags'][0]) as $key => $tag) {
-                array_push($tags, $tag->value);
-            }
-        }
-        $collection['tags'] = implode(',', $tags);
+        // $tags = array();
+        // if ($collection['tags'][0] != null) {
+        //     foreach (json_decode($collection['tags'][0]) as $key => $tag) {
+        //         array_push($tags, $tag->value);
+        //     }
+        // }
+        // $collection['tags'] = implode(',', $tags);
         $discount_start_date = null;
         $discount_end_date   = null;
         if ($collection['date_range'] != null) {
@@ -171,7 +171,7 @@ class ProductService
         $collection = collect($data);
 
         $slug = Str::slug($collection['name']);
-        $slug = $collection['slug'] ? Str::slug($collection['slug']) : Str::slug($collection['name']);
+        // $slug = $collection['slug'] ? Str::slug($collection['slug']) : Str::slug($collection['name']);
         $same_slug_count = Product::where('slug', 'LIKE', $slug . '%')->count();
         $slug_suffix = $same_slug_count > 1 ? '-' . $same_slug_count + 1 : '';
         $slug .= $slug_suffix;
@@ -195,13 +195,13 @@ class ProductService
         }
 
 
-        $tags = array();
-        if ($collection['tags'][0] != null) {
-            foreach (json_decode($collection['tags'][0]) as $key => $tag) {
-                array_push($tags, $tag->value);
-            }
-        }
-        $collection['tags'] = implode(',', $tags);
+        // $tags = array();
+        // if ($collection['tags'][0] != null) {
+        //     foreach (json_decode($collection['tags'][0]) as $key => $tag) {
+        //         array_push($tags, $tag->value);
+        //     }
+        // }
+        // $collection['tags'] = implode(',', $tags);
         $discount_start_date = null;
         $discount_end_date   = null;
         if ($collection['date_range'] != null) {

@@ -25,9 +25,9 @@
                                 <i class="la la-trash"></i>
                             </a>
                         </div>
-                        <!-- add to cart -->
-                        <a class="cart-btn absolute-bottom-left w-100 h-35px aiz-p-hov-icon text-white fs-13 fw-700 d-flex justify-content-center align-items-center" 
-                            href="javascript:void(0)" onclick="showAddToCartModal({{ $wishlist->product->id }})">{{ translate('Add to Cart') }}</a>
+                        <!-- add to cart TODO-->
+                        {{-- <a class="cart-btn absolute-bottom-left w-100 h-35px aiz-p-hov-icon text-white fs-13 fw-700 d-flex justify-content-center align-items-center" 
+                            href="javascript:void(0)" onclick="showAddToCartModal({{ $wishlist->product->id }})">{{ translate('Add to Cart') }}</a> --}}
                     </div>
                     <!-- Product Name -->
                     <h5 class="fs-14 mb-0 lh-1-5 fw-400 text-truncate-2 mb-3">
@@ -60,7 +60,9 @@
     </div>
 @endsection
 
-@section('modal')
+{{-- TODO --}}
+
+{{-- @section('modal')
     <!-- add To Cart Modal -->
     <div class="modal fade" id="addToCart" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
         <div class="modal-dialog modal-lg modal-dialog-centered modal-dialog-zoom product-modal" id="modal-size" role="document">
@@ -78,7 +80,7 @@
         </div>
     </div>
 
-@endsection
+@endsection --}}
 
 @section('script')
     <script type="text/javascript">
