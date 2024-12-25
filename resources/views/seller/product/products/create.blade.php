@@ -168,76 +168,56 @@
                             <h5 class="mb-0 h6">{{ translate('Product Variation') }}</h5>
                         </div>
                         <div class="card-body">
-                            <!-- Colors Section -->
                             <div class="form-group row">
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" value="{{ translate('Colors') }}" disabled>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="d-flex flex-wrap">
+                                    <select class="form-control aiz-selectpicker" data-live-search="true" name="colors[]"
+                                        data-selected-text-format="count" id="colors" multiple disabled>
                                         @foreach (\App\Models\Color::orderBy('name', 'asc')->get() as $key => $color)
-                                            <div class="form-check mr-3">
-                                                <input class="form-check-input" type="radio" name="color" value="{{ $color->code }}"
-                                                    id="color-{{ $key }}">
-                                                <label class="form-check-label" for="color-{{ $key }}">
-                                                    <span class="size-15px d-inline-block mr-2 rounded border" style="background:{{ $color->code }}"></span>
-                                                    {{ $color->name }}
-                                                </label>
-                                            </div>
+                                            <option value="{{ $color->code }}"
+                                                data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:{{ $color->code }}'></span><span>{{ $color->name }}</span></span>">
+                                            </option>
                                         @endforeach
-                                    </div>
+                                    </select>
+                                </div>
+                                <div class="col-md-1">
+                                    <label class="aiz-switch aiz-switch-success mb-0">
+                                        <input value="1" type="checkbox" name="colors_active">
+                                        <span></span>
+                                    </label>
                                 </div>
                             </div>
-                    
-                            <!-- Attributes Section -->
+
                             <div class="form-group row">
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" value="{{ translate('Attributes') }}" disabled>
+                                    <input type="text" class="form-control" value="{{ translate('Attributes') }}"
+                                        disabled>
                                 </div>
                                 <div class="col-md-8">
-                                    <div class="attributes-section">
+                                    <select name="choice_attributes[]" id="choice_attributes"
+                                        class="form-control aiz-selectpicker" data-live-search="true"
+                                        data-selected-text-format="count" multiple
+                                        data-placeholder="{{ translate('Choose Attributes') }}">
                                         @foreach (\App\Models\Attribute::all() as $key => $attribute)
-                                            <div class="attribute-group mb-3">
-                                                <label class="font-weight-bold">{{ $attribute->getTranslation('name') }}</label>
-                                                <div class="d-flex flex-wrap">
-                                                    @foreach ($attribute->values as $value)
-                                                        <div class="form-check mr-3">
-                                                            <input class="form-check-input" type="radio" name="attribute_{{ $attribute->id }}" value="{{ $value->id }}"
-                                                                id="attribute-{{ $attribute->id }}-value-{{ $value->id }}">
-                                                            <label class="form-check-label" for="attribute-{{ $attribute->id }}-value-{{ $value->id }}">
-                                                                {{ $value->getTranslation('name') }}
-                                                            </label>
-                                                        </div>
-                                                    @endforeach
-                                                </div>
-                                            </div>
+                                            <option value="{{ $attribute->id }}">{{ $attribute->getTranslation('name') }}
+                                            </option>
                                         @endforeach
-                                    </div>
+                                    </select>
                                 </div>
                             </div>
-                    
-                            <!-- Extras Section -->
-                            <div class="form-group row">
-                                <div class="col-md-3">
-                                    <input type="text" class="form-control" value="{{ translate('Extras') }}" disabled>
-                                </div>
-                                <div class="col-md-8">
-                                    <div class="extras-section">
-                                        @foreach (\App\Models\Extra::all() as $key => $extra)
-                                            <div class="form-check mr-3">
-                                                <input class="form-check-input" type="checkbox" name="extras[]" value="{{ $extra->id }}"
-                                                    id="extra-{{ $key }}">
-                                                <label class="form-check-label" for="extra-{{ $key }}">
-                                                    {{ $extra->getTranslation('name') }}
-                                                </label>
-                                            </div>
-                                        @endforeach
-                                    </div>
-                                </div>
+                            <div>
+                                <p>{{ translate('Choose the attributes of this product and then input values of each attribute') }}
+                                </p>
+                                <br>
+                            </div>
+
+                            <div class="customer_choice_options" id="customer_choice_options">
+
                             </div>
                         </div>
                     </div>
-                    
                     <div class="card">
                         <div class="card-header">
                             <h5 class="mb-0 h6">{{ translate('Product price + stock') }}</h5>
@@ -810,7 +790,6 @@
             }
         });
     });
-    
 
     $("[name=shipping_type]").on("change", function() {
         $(".product_wise_shipping_div").hide();
@@ -870,15 +849,6 @@
     $(document).on("change", ".attribute_choice", function() {
         update_sku();
     });
-    $(document).ready(function () {
-    // Restrict attribute selection to one value per attribute
-    $('input[type="radio"]').on('change', function () {
-        const attributeName = $(this).attr('name');
-        $('input[name="' + attributeName + '"]').not(this).prop('checked', false);
-    });
-
-    // Extras allow multiple selection (no restrictions needed here)
-});
 
     $('#colors').on('change', function() {
             update_sku();
