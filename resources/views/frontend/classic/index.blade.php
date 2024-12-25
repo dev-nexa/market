@@ -13,10 +13,10 @@
     <div class="home-banner-area mb-3" style="">
         <div class="container">
             <div class="d-flex flex-wrap position-relative">
-                {{-- ali home TODO --}}
-                {{-- <div class="position-static d-none d-xl-block">
+                
+                <div class="position-static d-none d-xl-block">
                     @include('frontend.'.get_setting("homepage_select").'.partials.category_menu')
-                </div> --}}
+                </div>
 
                 <!-- Sliders -->
                 <div class="home-slider">
