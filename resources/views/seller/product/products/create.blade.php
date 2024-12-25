@@ -168,19 +168,24 @@
                             <h5 class="mb-0 h6">{{ translate('Product Variation') }}</h5>
                         </div>
                         <div class="card-body">
+                            <!-- Colors Section -->
                             <div class="form-group row">
                                 <div class="col-md-3">
                                     <input type="text" class="form-control" value="{{ translate('Colors') }}" disabled>
                                 </div>
                                 <div class="col-md-8">
-                                    <select class="form-control aiz-selectpicker" data-live-search="true" name="colors[]"
-                                        data-selected-text-format="count" id="colors" multiple disabled>
+                                    <div class="d-flex flex-wrap">
                                         @foreach (\App\Models\Color::orderBy('name', 'asc')->get() as $key => $color)
-                                            <option value="{{ $color->code }}"
-                                                data-content="<span><span class='size-15px d-inline-block mr-2 rounded border' style='background:{{ $color->code }}'></span><span>{{ $color->name }}</span></span>">
-                                            </option>
+                                            <div class="form-check mr-3">
+                                                <input class="form-check-input" type="checkbox" name="colors[]" value="{{ $color->code }}"
+                                                    id="color-{{ $key }}">
+                                                <label class="form-check-label" for="color-{{ $key }}">
+                                                    <span class="size-15px d-inline-block mr-2 rounded border" style="background:{{ $color->code }}"></span>
+                                                    {{ $color->name }}
+                                                </label>
+                                            </div>
                                         @endforeach
-                                    </select>
+                                    </div>
                                 </div>
                                 <div class="col-md-1">
                                     <label class="aiz-switch aiz-switch-success mb-0">
@@ -189,35 +194,45 @@
                                     </label>
                                 </div>
                             </div>
-
+                    
+                            <!-- Attributes Section -->
                             <div class="form-group row">
                                 <div class="col-md-3">
-                                    <input type="text" class="form-control" value="{{ translate('Attributes') }}"
-                                        disabled>
+                                    <input type="text" class="form-control" value="{{ translate('Attributes') }}" disabled>
                                 </div>
                                 <div class="col-md-8">
-                                    <select name="choice_attributes[]" id="choice_attributes"
-                                        class="form-control aiz-selectpicker" data-live-search="true"
-                                        data-selected-text-format="count" multiple
-                                        data-placeholder="{{ translate('Choose Attributes') }}">
+                                    <div class="attributes-section">
                                         @foreach (\App\Models\Attribute::all() as $key => $attribute)
-                                            <option value="{{ $attribute->id }}">{{ $attribute->getTranslation('name') }}
-                                            </option>
+                                            <div class="attribute-group mb-3">
+                                                <label class="font-weight-bold">{{ $attribute->getTranslation('name') }}</label>
+                                                <div class="d-flex flex-wrap">
+                                                    @foreach ($attribute->values as $value)
+                                                        <div class="form-check mr-3">
+                                                            <input class="form-check-input" type="checkbox" name="attribute_values[{{ $attribute->id }}][]" value="{{ $value->id }}"
+                                                                id="attribute-{{ $attribute->id }}-value-{{ $value->id }}">
+                                                            <label class="form-check-label" for="attribute-{{ $attribute->id }}-value-{{ $value->id }}">
+                                                                {{ $value->getTranslation('name') }}
+                                                            </label>
+                                                        </div>
+                                                    @endforeach
+                                                </div>
+                                            </div>
                                         @endforeach
-                                    </select>
+                                    </div>
                                 </div>
                             </div>
                             <div>
-                                <p>{{ translate('Choose the attributes of this product and then input values of each attribute') }}
-                                </p>
+                                <p>{{ translate('Choose the attributes of this product and then input values of each attribute') }}</p>
                                 <br>
                             </div>
-
+                    
+                            <!-- Customer Choice Options -->
                             <div class="customer_choice_options" id="customer_choice_options">
-
+                    
                             </div>
                         </div>
                     </div>
+                    
                     <div class="card">
                         <div class="card-header">
                             <h5 class="mb-0 h6">{{ translate('Product price + stock') }}</h5>
