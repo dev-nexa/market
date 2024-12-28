@@ -138,8 +138,9 @@
                                 $header_logo = get_setting('header_logo');
                             @endphp
                             @if ($header_logo != null)
-                                <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}"
-                                    class="mw-100 h-30px h-md-40px" height="40">
+                            <img src="{{ uploaded_asset($header_logo) }}" alt="{{ env('APP_NAME') }}"
+                            class="mw-100 h-50px h-md-60px" height="40" style="margin-top: -20px;">
+                       
                             @else
                                 <img src="{{ static_asset('assets/img/logo.png') }}" alt="{{ env('APP_NAME') }}"
                                     class="mw-100 h-30px h-md-40px" height="40">
@@ -358,7 +359,7 @@
                                 <a href="{{ route('user.registration') }}"
                                     class="text-reset opacity-60 hov-opacity-100 hov-text-primary fs-12 d-inline-block py-2 pl-2">{{ translate('Registration') }}</a> -->
                                 <a href="{{ route('shops.create') }}"
-                                    class="text-reset opacity-60 hov-opacity-100 hov-text-primary fs-12 d-inline-block py-2 pl-2">{{ translate('Sell now !') }}</a>
+                                    class="text-reset opacity-60 hov-opacity-100 hov-text-primary fs-12 d-inline-block py-2 pl-2">{{ translate('Sell nowwwww !') }}</a>
                             </span>
                         @endauth
                     </div>
