@@ -128,7 +128,7 @@
                     {!! get_setting('about_us_description',null,App::getLocale()) !!}
                 </div>
                 @if(get_setting('newsletter_activation'))
-                    <h5 class="fs-14 fw-700 text-soft-light mt-1 mb-3">{{ translate('Subscribe to our newsletter for regular updates about Offers, Coupons & more') }}</h5>
+                    <h5 class="fs-14 fw-700 text-soft-light mt-1 mb-3">{{ translate('Subscribe to our newsletter for regular updates about Offers, Coupons & moreeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee') }}</h5>
                     <div class="mb-3">
                         <form method="POST" action="{{ route('subscribers.store') }}">
                             @csrf
